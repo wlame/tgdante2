@@ -21,7 +21,7 @@ if [ x"${IP6}" = "x" ]; then
 fi
 
 if [ x"${INTERFACE}" = "x" ]; then
-        INTERFACE=`ip  r | grep '^default' | grep -o 'dev[ ]*[^ ]*' | grep -o '[^ ]*$' || echo ""`
+        INTERFACE=`ip  r | grep '^default' | grep -o 'dev[ ]*[^ ]*' | grep -o '[^ ]*$ |head -n 1' || echo ""`
 fi
 if [  x"${INTERFACE}" != "x" ]; then
                 sed -i 's/external\:.*$/external: '"${INTERFACE}"'/' "${CFGFILE}"
